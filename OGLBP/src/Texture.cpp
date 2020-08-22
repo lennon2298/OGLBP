@@ -12,12 +12,12 @@ Texture::Texture(const std::string& filePath)
 	GLCall(glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR));
 	GLCall(glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR));
 
-	m_LocalBuffer = SOIL_load_image(filePath.c_str(), &m_Width, &m_Height, 0, SOIL_LOAD_RGBA);
+	m_LocalBuffer = stbi_load(filePath.c_str(), &m_Width, &m_Height, 0, 0);
 
 	GLCall(glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, m_Width, m_Height, 0, GL_RGBA, GL_UNSIGNED_BYTE, m_LocalBuffer));
 	GLCall(glGenerateMipmap(GL_TEXTURE_2D));
 
-	SOIL_free_image_data(m_LocalBuffer);
+	stbi_image_free(m_LocalBuffer);
 }
 
 Texture::~Texture()

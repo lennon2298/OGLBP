@@ -1,8 +1,9 @@
 #pragma once
 
 #include<glad/glad.h>
+#include "debugbreak.h"
 
-#define ASSERT(x) if (!(x)) __debugbreak();
+#define ASSERT(x) if (!(x)) debug_break();
 
 #define GLCall(x) GLClearError();\
 		x;\

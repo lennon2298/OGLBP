@@ -1,4 +1,4 @@
-workspace "OpenGL"
+workspace "OGLBP"
 
     architecture "x64"
 
@@ -9,23 +9,23 @@ workspace "OpenGL"
     }
 
     filter "system:windows"
-        startproject "OpenGL"
+        startproject "OGLBP"
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
 IncludeDir = {}
-IncludeDir["GLFW"] = "OpenGL/vendor/glfw/include"
-IncludeDir["Glad"] = "OpenGL/vendor/glad/include"
-IncludeDir["glm"] = "OpenGL/vendor/glm"
-IncludeDir["stb_image"] = "OpenGL/vendor/stb/include"
+IncludeDir["GLFW"] = "OGLBP/Vendor/GLFW/include"
+IncludeDir["Glad"] = "OGLBP/Vendor/glad/include"
+IncludeDir["glm"] = "OGLBP/Vendor/glm"
+IncludeDir["stb_image"] = "OGLBP/Vendor/stb/include"
 
 group "Dependencies"
-    include "OpenGL/vendor/glfw"
-    include "OpenGL/vendor/glad"
+    include "OGLBP/Vendor/GLFW"
+    include "OGLBP/Vendor/glad"
 group ""
 
-project "OpenGL"
-    location "OpenGL"
+project "OGLBP"
+    location "OGLBP"
     kind "ConsoleApp"
     language "C++"
 
@@ -36,10 +36,10 @@ project "OpenGL"
     {
         "%{prj.name}/src/**.h",
         "%{prj.name}/src/**.cpp",
-        "%{prj.name}/vendor/stb/include/**.h",
-		"%{prj.name}/vendor/stb/include/**.cpp",
-		"%{prj.name}/vendor/glm/glm/**.hpp",
-		"%{prj.name}/vendor/glm/glm/**.inl",
+        "%{prj.name}/Vendor/stb/include/**.h",
+		"%{prj.name}/Vendor/stb/include/**.cpp",
+		"%{prj.name}/Vendor/glm/glm/**.hpp",
+		"%{prj.name}/Vendor/glm/glm/**.inl",
     }
 
     includedirs
@@ -69,20 +69,10 @@ project "OpenGL"
             "opengl32.lib"
         }
 
-        postbuildcommands
-        {
-            ("{COPY} ./Resources  ../bin/" .. outputdir .. "/%{prj.name}/")
-        }
-
     filter "system:linux"
         cppdialect "C++17"
         staticruntime "On"
         systemversion "latest"
-
-        postbuildcommands
-        {
-            ("{COPY} ./Resources  ../bin/" .. outputdir .. "/%{prj.name}/")
-        }
 
         links
         {
@@ -108,3 +98,7 @@ project "OpenGL"
         defines "GE_DIST"
         optimize "On"
 
+--postbuildcommands
+--{
+--    ("{COPY} ./Resources  ../bin/" .. outputdir .. "/%{prj.name}/")
+--}

@@ -1,0 +1,6 @@
+[submodule "OGLBP/Vendor/GLFW"]
+	path = OGLBP/Vendor/GLFW
+	url = https://github.com/lennon2298/glfw
+[submodule "OGLBP/Vendor/glm"]
+	path = OGLBP/Vendor/glm
+	url = https://github.com/g-truc/glm

@@ -6,6 +6,8 @@
 *.lo
 *.o
 *.obj
+GLFW
+glm
 
 # Precompiled Headers
 *.gch
@@ -37,7 +39,8 @@
 *.vcxproj
 Makefile
 
-#Project Binaries
+#Project Binaries and IDE generated folders/files
 .vs/
+.vscode/
 bin/ 
 bin-int/ 

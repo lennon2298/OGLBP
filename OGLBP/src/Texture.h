@@ -1,7 +1,7 @@
 #pragma once
 
 #include "ErrorHandling.h"
-#include <SOIL/SOIL2.h>
+#include <stb_image.h>
 #include <string>
 
 class Texture {
